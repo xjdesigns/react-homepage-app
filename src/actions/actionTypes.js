@@ -1,0 +1,5 @@
+export const FETCH_STUFF = 'FETCH_STUFF'
+export const RECEIVE_STUFF = 'RECEIVE_STUFF'
+export const UPDATE_UI = 'UPDATE_UI'
+export const UPDATE_UI_MODAL = 'UPDATE_UI_MODAL'
+// export const UPDATE_SIDENAV_STATE = 'UPDATE_SIDENAV_STATE'

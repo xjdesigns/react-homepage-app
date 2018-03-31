@@ -1,5 +1,5 @@
 {
-  "name": "homepage-app",
+  "name": "target_checkout",
   "version": "0.1.0",
   "private": true,
   "main": "main.js",
@@ -7,7 +7,6 @@
   "dependencies": {
     "electron": "^1.8.4",
     "enzyme-adapter-react-16": "^1.1.1",
-    "is-electron": "^2.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.7",
@@ -41,7 +40,7 @@
     "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "elec-test": "concurrently \"npm start\" \"npm run electron-dev\"",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --ignore=/src --ignore=/node_modules --ignore=/gulp --ignore=/public --ignore=/scss --ignore=coverage --ignore=gulpfile.js --out=release-builds"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -2,10 +2,9 @@
   "name": "target_checkout",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "dependencies": {
-    "electron": "^1.8.4",
     "enzyme-adapter-react-16": "^1.1.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -19,6 +18,9 @@
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "concurrently": "^3.5.1",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.1",
+    "electron-is-dev": "^0.3.0",
     "electron-packager": "^11.2.0",
     "enzyme": "^3.3.0",
     "gulp": "^3.9.1",
@@ -27,6 +29,7 @@
     "gulp-postcss": "^6.4.0",
     "gulp-sass": "^3.1.0",
     "gulp-watch": "^4.3.11",
+    "is-electron": "^2.1.0",
     "istanbul": "^0.4.5",
     "redux-immutable-state-invariant": "^2.1.0",
     "require-dir": "^1.0.0"
@@ -40,7 +43,9 @@
     "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "elec-test": "concurrently \"npm start\" \"npm run electron-dev\"",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --ignore=/src --ignore=/node_modules --ignore=/gulp --ignore=/public --ignore=/scss --ignore=coverage --ignore=gulpfile.js --out=release-builds"
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --ignore=/src --ignore=/node_modules --ignore=/gulp --ignore=/public --ignore=/scss --ignore=coverage --ignore=gulpfile.js --out=release-builds",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -51,5 +56,46 @@
     "coverageReporters": [
       "lcov"
     ]
+  },
+  "build": {
+    "appId": "com.example.app",
+    "productName": "Target Checkout",
+    "copyright": "Target Corp©",
+    "files": [
+      "*.js",
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "category": "Checkout"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Development"
+    }
   }
 }

@@ -1,3 +1,4 @@
+// NOTE: This is moved to public for CRA and Electron Builder
 // ./main.js
 const {app, BrowserWindow, Menu, ipcMain} = require('electron')
 const path = require('path')

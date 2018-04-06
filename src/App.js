@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import StuffList from './stuffList'
+import CartList from './components/cart-list/cart-list.comp'
 import MainComp from './components/main.comp'
 import Button from './components/button/button.comp'
 
 import isElectron from 'is-electron'
-
-// import {window.ipcRenderer} from 'electron'
-// let isTrue = false
-// let window.ipcRenderer
-// if(window.require) {
-//   isTrue = true;
-//   const electron = window.require('electron');
-//   const fs = electron.remote.require('fs');
-//   ipcRenderer  = electron.ipcRenderer;
-// }
-
 
 class App extends Component {
   constructor() {
@@ -24,9 +14,6 @@ class App extends Component {
     }
 
     if(isElectron()) {
-      // setTimeout(() => {
-      //   ipcRenderer.send('hello-world', [{name: 'jasonRocks'}])
-      // }, 2000);
       window.ipcRenderer.on('hello-world', (e) => {
         console.warn('WHY NO WORJING', e);
       })
@@ -60,6 +47,7 @@ class App extends Component {
       return (
         <div className="app">
           <StuffList store={this.props.store} />
+          <CartList></CartList>
           <MainComp></MainComp>
           <div className={this.state.isActive ? 'hello' : 'world'}>
             <Button cls="spx-btn spx-btn--pr" callbackParent={this.fromMyChild} theStore={this.state.isActive}></Button>

@@ -3,6 +3,10 @@ const {app, BrowserWindow, Menu, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
 
+// connect to our socket from the local device simulator
+var io = require('socket.io-client');
+var socket = io('http://localhost:7003');
+
 let win = null;
 
 app.on('ready', function () {
@@ -55,6 +59,15 @@ app.on('window-all-closed', function () {
 ipcMain.on('hello-world', (e, msg) => {
   console.warn('IPCMAIN:::: ON', msg);
   e.sender.send('pong', {name: 'Hason'})
+
+  socket.emit('device:sim', 'Look at me, remember it must be serialized');
+})
+
+socket.on('device:sim', function(msg) {
+  // remember this will only warn inside of the terminal
+  // set the ipc to push it out to the app
+  console.warn('this works, I am electron js');
+  win.webContents.send('device:sim:main', msg)
 })
 
 

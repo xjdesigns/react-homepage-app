@@ -11,7 +11,6 @@ import Button from './components/button/button.comp'
 // discuss with the team what the flow is and handle there.
 // this would need to handle the browser window running as well
 import io from 'socket.io-client'
-
 import isElectron from 'is-electron'
 
 class App extends Component {
@@ -30,6 +29,7 @@ class App extends Component {
       })
     }
   }
+
   componentWillMount() {
     // this.props.store.subscribe(() => {
     //   let e = this.props.store.getState().stuff.ui;

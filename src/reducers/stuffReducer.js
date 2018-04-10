@@ -3,7 +3,8 @@ import {
   FETCH_STUFF,
   RECEIVE_STUFF,
   UPDATE_UI,
-  UPDATE_UI_MODAL
+  UPDATE_UI_MODAL,
+  UPDATE_DATA_ON_POST
 } from '../actions/actionTypes';
 
 import {
@@ -29,6 +30,11 @@ export default function stuff(state = initialState, action) {
       newState = {...state.ui, isSidenavOpen: action.ui};
       state = {...state, ui: newState}
       return state;
+    case UPDATE_DATA_ON_POST:
+      let newdata = state.data.concat()
+      newdata.push(action.stuff.body[0])
+      newState = {...state, data: newdata}
+      return {...newState};
     default:
       return state;
   }

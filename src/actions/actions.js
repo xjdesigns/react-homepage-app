@@ -50,3 +50,20 @@ export function updateUIModalState() {
 //     })
 //   }
 // }
+
+export function fetchPosts() {
+  return function(dispatch) {
+    // this could be to tell its loading
+    // dispatch()
+    console.warn('I am here')
+
+    return fetch('http://localhost:7001/api/posts')
+      .then(rep => rep.json())
+      .then(json => {
+        dispatch({
+          type: types.UPDATE_DATA_ON_POST,
+          stuff: json
+        })
+      })
+  }
+}

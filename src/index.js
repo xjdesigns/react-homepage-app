@@ -5,10 +5,11 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 // import { render } from 'redux'
-import configureStore from './store/configureStore'
+import configureStore, { runSaga } from './store/configureStore'
 import {Provider} from 'react-redux'
 
 const store = configureStore()
+runSaga()
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(

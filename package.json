@@ -32,6 +32,7 @@
     "is-electron": "^2.1.0",
     "istanbul": "^0.4.5",
     "redux-immutable-state-invariant": "^2.1.0",
+    "redux-saga": "^0.16.0",
     "require-dir": "^1.0.0",
     "socket.io": "^2.1.0"
   },

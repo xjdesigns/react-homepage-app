@@ -4,7 +4,10 @@ import {
   RECEIVE_STUFF,
   UPDATE_UI,
   UPDATE_UI_MODAL,
-  UPDATE_DATA_ON_POST
+  UPDATE_DATA_ON_POST,
+  API_CALL_REQUEST,
+  API_CALL_SUCCESS,
+  API_CALL_FAILURE
 } from '../actions/actionTypes';
 
 import {
@@ -35,6 +38,18 @@ export default function stuff(state = initialState, action) {
       newdata.push(action.stuff.body[0])
       newState = {...state, data: newdata}
       return {...newState};
+    case API_CALL_REQUEST:
+      newState = {...state.ui, isFetchingData: true }
+      state = {...state, ui: newState}
+      return state;
+    case API_CALL_SUCCESS:
+      newState = {...state.ui, isFetchingData: false, fetchedData: action.data }
+      state = {...state, ui: newState}
+      return state;
+    case API_CALL_FAILURE:
+      newState = {...state.ui, isFetchingData: false, fetchedData: null }
+      state = {...state, ui: newState}
+      return state;
     default:
       return state;
   }

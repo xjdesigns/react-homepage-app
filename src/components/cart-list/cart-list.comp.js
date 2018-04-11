@@ -13,7 +13,7 @@ class CartList extends React.Component {
   }
 
   componentWillMount() {
-      this.props.stuffActions.fetchStuff();
+      // this.props.stuffActions.fetchStuff();
   }
 
   addNew() {

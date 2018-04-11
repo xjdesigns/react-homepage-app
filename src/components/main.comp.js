@@ -11,9 +11,10 @@ class MainComp extends React.Component {
   componentWillMount() {
     if(isElectron()) {
       window.ipcRenderer.on('device:sim:main', (ev, data) => {
-      console.warn('app JS:: from main:: MainComp', data);
-      this.props.callThunkAPI();
-    })
+        console.warn('app JS:: from main:: MainComp', data);
+        // this.props.callThunkAPI();
+        this.props.callSaga()
+      })
     }
   }
 
@@ -24,6 +25,10 @@ class MainComp extends React.Component {
 
   thunkAPI = () => {
     this.props.callThunkAPI();
+  }
+
+  callSaga = () => {
+    this.props.callSaga()
   }
 
   render() {
@@ -60,6 +65,9 @@ function mapDispatchToProps(dispatch) {
     },
     callThunkAPI: () => {
       dispatch(stuffActions.fetchPosts())
+    },
+    callSaga: () => {
+      dispatch({ type: 'API_CALL_REQUEST' })
     }
   }
 }

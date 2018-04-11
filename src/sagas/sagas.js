@@ -7,13 +7,11 @@ export function* watcherSaga() {
 
 export function* workerSaga() {
   try {
-
     const data = yield call(fetchData)
     yield put({ type: "API_CALL_SUCCESS", data })
 
   } catch(error) {
-
-    console.log('workerSaga:: ERROR');
+    console.log('workerSaga:: ERROR', error);
     yield put({ type: 'API_CALL_FAILURE', error })
 
   }

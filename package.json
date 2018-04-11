@@ -40,6 +40,7 @@
     "start": "PORT=7000 BROWSER=none concurrently \"react-scripts start\" \"gulp watch\" ",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "scss": "gulp watch",
     "electron": "electron .",

@@ -34,7 +34,8 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-saga": "^0.16.0",
     "require-dir": "^1.0.0",
-    "socket.io": "^2.1.0"
+    "socket.io": "^2.1.0",
+    "socket.io-client": "^2.1.0"
   },
   "scripts": {
     "start": "PORT=7000 BROWSER=none concurrently \"react-scripts start\" \"gulp watch\" ",

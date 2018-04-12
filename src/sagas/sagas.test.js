@@ -31,11 +31,4 @@ describe('sagas::', () => {
     workerGen.next()
     expect(workerGen.throw(error).value).toEqual(put({ type: 'API_CALL_FAILURE', error }))
   })
-
-  // it('should call workerSaga, and test the put', () => {
-  //   // expect(workerGen.next().value.CALL.fn).toEqual(fetchData);
-  //   workerGen.next()
-  //   workerGen.throw({message: "error!"})
-  //   expect(workerGen.next().value.PUT.action.type).toBe('API_CALL_SUCCESS')
-  // })
 })
